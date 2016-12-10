@@ -69,30 +69,33 @@
     </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab_update"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_gravity="bottom|right"
-        android:layout_margin="-8dp"
-        android:visibility="visible"
-        app:backgroundTint="@color/orange_90"
-        app:fabSize="mini"
-        app:srcCompat="@drawable/ic_action_update" />
-
-    <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="-8dp"
 
-        android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/fab_update"
-        android:layout_toStartOf="@+id/fab_update"
         android:visibility="visible"
         app:backgroundTint="@color/orange_90"
         app:fabSize="mini"
-        app:srcCompat="@drawable/ic_arrow_back" />
+        app:srcCompat="@drawable/ic_arrow_back"
+        android:layout_below="@+id/errorViewSchedule"
+        android:layout_toRightOf="@+id/errorViewSchedule"
+        android:layout_toEndOf="@+id/errorViewSchedule"
+        android:layout_marginLeft="4dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:visibility="visible"
+        app:backgroundTint="@color/orange_90"
+        app:fabSize="mini"
+        app:srcCompat="@drawable/ic_action_update"
+        android:layout_alignTop="@+id/fab_back"
+        android:layout_toRightOf="@+id/fab_back"
+        android:layout_toEndOf="@+id/fab_back"
+        android:layout_marginLeft="4dp"
+        android:layout_marginStart="4dp" />
 </RelativeLayout>

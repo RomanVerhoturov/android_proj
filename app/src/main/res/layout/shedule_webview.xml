@@ -78,10 +78,9 @@
         app:fabSize="mini"
         app:srcCompat="@drawable/ic_arrow_back"
         android:layout_below="@+id/errorViewSchedule"
-        android:layout_toRightOf="@+id/errorViewSchedule"
-        android:layout_toEndOf="@+id/errorViewSchedule"
-        android:layout_marginLeft="4dp"
-        android:layout_marginStart="4dp"
+        android:layout_toLeftOf="@+id/fab_update"
+        android:layout_toStartOf="@+id/fab_update"
+        android:layout_marginRight="4dp"
         android:layout_marginTop="4dp" />
 
     <android.support.design.widget.FloatingActionButton
@@ -93,9 +92,9 @@
         app:backgroundTint="@color/orange_90"
         app:fabSize="mini"
         app:srcCompat="@drawable/ic_action_update"
-        android:layout_alignTop="@+id/fab_back"
-        android:layout_toRightOf="@+id/fab_back"
-        android:layout_toEndOf="@+id/fab_back"
-        android:layout_marginLeft="4dp"
-        android:layout_marginStart="4dp" />
+        android:layout_below="@+id/errorViewSchedule"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="4dp" />
 </RelativeLayout>

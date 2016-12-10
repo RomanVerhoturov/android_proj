@@ -285,7 +285,7 @@ public class ResourceFragment extends AbstractTabFragment {
                     Log.d(LOG_TAG, "database.insert()  " + contentValues);
                 } else if (cacheSize > resourcesJSONArr.length()) {
                     Log.d(LOG_TAG, " database.update() " + contentValues);
-                    database.update(DBHelper.TABLE_NAME_NEWS, contentValues,
+                    database.update(DBHelper.TABLE_NAME_RESOURCES, contentValues,
                             DBHelper.COLUMN_ID + " = ?", new String[]{existingResource[this.COLUMN_ID]});
                 }else {
                     if (existingResource[this.COLUMN_RES_NAME].equals(resource.getResName()) &

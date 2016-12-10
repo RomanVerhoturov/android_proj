@@ -104,7 +104,12 @@ public class ScheduleFragment extends AbstractTabFragment {
         mWebView.addJavascriptInterface(new AjaxHandler(getContext()), "ajaxHandler");
         mWebView.setWebViewClient(new MyWebViewClient());
 
+        // set webview width to screen width and add zoom ability
         mWebView.setPadding(0, 0, 0, 0);
+        mWebView.getSettings().setLoadWithOverviewMode(true);
+        mWebView.getSettings().setUseWideViewPort(true);
+        mWebView.getSettings().setBuiltInZoomControls(true);
+        mWebView.getSettings().setDisplayZoomControls(false);
 
         // HTML5 API flags
         mWebView.getSettings().setAppCacheEnabled(true);

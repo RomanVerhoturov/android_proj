@@ -1,5 +1,5 @@
-.header.zindex20, .left-side, .right-side, .footer, .hist, .zagolovok, #qrdiv {
-   display: none;
+.header.zindex20, .left-side, .right-side, .footer, .hist, .zagolovok, #qrdiv, .view_print {
+   display: none !important;
 }
 
 .content {
@@ -18,3 +18,27 @@
      float: right;
 }
 
+.content {
+    font-size: 28px;
+}
+
+.middle {
+    line-height: 36px;
+}
+
+.sch_search p {
+    font-size: 20px !important;
+}
+
+.sch_view li {
+    float: left  !important;
+    font-size: 90%  !important;
+}
+
+.content ul {
+    margin-left: 0px !important;
+}
+
+p[style*="text-align: right; font-style: italic; font-size: 80%;"] {
+    display: none;
+}

@@ -15,9 +15,12 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Base64;
 import android.util.Log;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
@@ -29,7 +32,6 @@ import java.io.InputStream;
 import istu.edu.irnitu.IOPackage.Constants;
 import istu.edu.irnitu.IOPackage.InternetController;
 import istu.edu.irnitu.R;
-
 
 
 public class ScheduleFragment extends AbstractTabFragment {
@@ -102,6 +104,13 @@ public class ScheduleFragment extends AbstractTabFragment {
         mWebView.addJavascriptInterface(new AjaxHandler(getContext()), "ajaxHandler");
         mWebView.setWebViewClient(new MyWebViewClient());
 
+        mWebView.setPadding(0, 0, 0, 0);
+//        set webview width to screen width
+        mWebView.getSettings().setLoadWithOverviewMode(true);
+        mWebView.getSettings().setUseWideViewPort(true);
+        mWebView.getSettings().setBuiltInZoomControls(true);
+        mWebView.setInitialScale(250);
+
         // HTML5 API flags
         mWebView.getSettings().setAppCacheEnabled(true);
         mWebView.getSettings().setDatabaseEnabled(true);
@@ -161,7 +170,7 @@ public class ScheduleFragment extends AbstractTabFragment {
         }
     }
 
-    public void goBrouserBack(){
+    public void goBrouserBack() {
         if (mWebView.canGoBack()) {
             mWebView.goBack();
         }
@@ -171,15 +180,15 @@ public class ScheduleFragment extends AbstractTabFragment {
         return mWebView;
     }
 
-    private void loadUrl(String url){
+    private void loadUrl(String url) {
         if (InternetController.hasConnection(view.getContext())) {
             Log.d(LOG_TAG, "Has Connection");
-            showErrorView(false,0);
+            showErrorView(false, 0);
             mWebView.loadUrl(url);
-        }else {
+        } else {
             Log.d(LOG_TAG, "NoConnection");
-            showErrorView(true,R.string.error_nointernet);
-            swipeContainer.setRefreshing(false);
+            showErrorView(true, R.string.error_nointernet);
+//            swipeContainer.setRefreshing(false);
         }
     }
 
@@ -196,9 +205,9 @@ public class ScheduleFragment extends AbstractTabFragment {
         public void onPageStarted(WebView view, String url, Bitmap favicon) {
             // TODO Auto-generated method stub
 
-                showProgress(true);
-                currentUrl = url;
-                super.onPageStarted(view, url, favicon);
+            showProgress(true);
+            currentUrl = url;
+            super.onPageStarted(view, url, favicon);
 
 
         }

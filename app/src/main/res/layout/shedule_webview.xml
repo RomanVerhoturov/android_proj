@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--<android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipeContainerSchedule"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></android.support.v4.widget.SwipeRefreshLayout>
+-->
+
+
+    <LinearLayout
+        android:id="@+id/errorViewSchedule"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/activity_vertical_margin_half"
+        android:paddingRight="@dimen/activity_vertical_margin_half"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/schedule_errorTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center" />
+
+        <Button
+            android:id="@+id/buttonRetrySchedule"
+            style="@style/small_common_button"
+            android:text="@string/retry_short" />
+
+    </LinearLayout>
+
+    <WebView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/webViewSchedule"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+
+    <LinearLayout
+        android:id="@+id/progressSchedule"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <ProgressBar
+            android:id="@+id/mapProgress"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/loading" />
+
+    </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="-8dp"
+        android:visibility="visible"
+        app:backgroundTint="@color/orange_90"
+        app:fabSize="mini"
+        app:srcCompat="@drawable/ic_action_update" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="-8dp"
+
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/fab_update"
+        android:layout_toStartOf="@+id/fab_update"
+        android:visibility="visible"
+        app:backgroundTint="@color/orange_90"
+        app:fabSize="mini"
+        app:srcCompat="@drawable/ic_arrow_back" />
+</RelativeLayout>

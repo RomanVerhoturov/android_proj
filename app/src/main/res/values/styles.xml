@@ -1,0 +1,156 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="myToolbarStyle" parent="@style/Widget.AppCompat.Toolbar">
+        <item name="android:paddingRight">10dp</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="DividerLightGrey">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/dividerLightGrey</item>
+    </style>
+
+    <style name="DividerMediumGrey">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/dividerMediumGrey</item>
+    </style>
+
+    <style name="common_button_rounded">
+        <item name="android:textSize">@dimen/text_size_small</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/activity_vertical_margin</item>
+        <item name="android:background">@drawable/button_rounded_corners</item>
+        <item name="android:textColor">@color/abc_primary_text_disable_only_material_dark</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="common_button">
+        <item name="android:textSize">@dimen/text_size_small</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/button_rigth_corners</item>
+        <item name="android:textColor">@color/primaryTextBlack</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="small_common_button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">32dp</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:background">@drawable/button_rounded_corners</item>
+        <item name="android:paddingLeft">@dimen/activity_horizontal_margin</item>
+        <item name="android:paddingRight">@dimen/activity_horizontal_margin</item>
+        <item name="android:textColor">@color/abc_primary_text_disable_only_material_dark</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="medium_text_grey">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/secondaryTextGrey</item>
+        <item name="android:textSize">@dimen/text_size_medium</item>
+    </style>
+
+    <style name="medium_label">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/activity_vertical_margin_half</item>
+        <item name="android:layout_marginBottom">@dimen/activity_vertical_margin_fourth</item>
+        <item name="android:textColor">@color/primaryTextBlack</item>
+        <item name="android:textSize">@dimen/text_size_medium</item>
+    </style>
+
+    <style name="large_label">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/activity_vertical_margin_half</item>
+        <item name="android:layout_marginBottom">@dimen/activity_vertical_margin_half</item>
+        <item name="android:textColor">@color/primaryTextBlack</item>
+        <item name="android:textSize">@dimen/text_size_large</item>
+    </style>
+
+    <style name="simple_large_label">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+
+        <item name="android:textColor">@color/primaryTextBlack</item>
+        <item name="android:textSize">@dimen/text_size_large</item>
+    </style>
+
+    <style name="text_grey_small">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">@dimen/text_size_small</item>
+        <item name="android:textColor">@color/secondaryTextGrey</item>
+    </style>
+
+    <style name="text_about">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">@dimen/text_size_small_med</item>
+        <item name="android:textColor">@color/primaryTextGrey</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="text_grey_small_news">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">@dimen/text_size_small</item>
+        <item name="android:textColor">@color/primaryTextGrey</item>
+    </style>
+
+    <style name="circle_view_character">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:textColor">@color/clearWhite</item>
+        <item name="android:textSize">@dimen/text_size_large</item>
+    </style>
+
+    <style name="ExpandedAppBar" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/transparent</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="CollapsedAppBar" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textSize">19sp</item>
+        <item name="android:textColor">@color/clearWhite</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="version_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_marginTop">@dimen/activity_horizontal_margin</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/primaryTextGrey</item>
+        <item name="android:textSize">@dimen/text_size_medium</item>
+    </style>
+
+
+</resources>

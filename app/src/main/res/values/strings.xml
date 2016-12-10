@@ -1,0 +1,65 @@
+<resources>
+    <string name="app_name">ЭО ИРНИТУ</string>
+    <string name="action_about">О приложении</string>
+    <string name="tab_item_news">Новости</string>
+    <string name="tab_item_resources">Ресурсы</string>
+    <string name="loading">Загрузка</string>
+    <string name="retry">Повторить попытку</string>
+    <string name="retry_short">Повторить</string>
+    <string name="title_activity_news">Просмотр новости</string>
+
+    <string name="dialog_yes">Да</string>
+    <string name="dialog_no">Нет</string>
+    <string name="dialog_cancel">Отмена</string>
+    <string name="positive_ok">Ok</string>
+    <string name="chooseUrl">Выберите ссылку</string>
+    <string name="chooseNumber">Выберите номер</string>
+
+
+    <string name="error_nointernet">Нет соединения с сетью. Проверьте настройки и попробуйте еще раз.</string>
+    <string name="error_nodata">Данные не получены. Проверьте подключение к интернету и попробуйте обновить вкладку.</string>
+    <string name="error_nores">Данные не получены. Возможно, раздел с ресурсами на модерации.
+        Проверьте подключение к интернету и попробуйте обновить вкладку.</string>
+    <string name="new_text_habl">Турниром по настольному теннису 1 ноября
+открылась ежегодная спартакиада Иркутского
+национального исследовательского
+технического университета. Командное
+первенство среди юношей одержал Институт
+авиамашиностроения и транспорта, а среди
+девушек первыми оказались студентки
+Института изобразительных искусств и
+социально-гуманитарных наук. В личном первенстве среди юношей золотую
+медаль завоевал студент Института
+недропользования Тумен Батуев. Вторую и
+третью строчку таблицы заняли
+представители Института архитектуры и
+строительства Андрей Шевелев и Михаил
+Убугунов.Среди девушек равных не было
+студентке Института изобразительных
+искусств и социально-гуманитарных наук
+Анне Кипцар. Второй стала представительница
+ Института экономики, управления и права
+Ангелина Мурашева, а замкнула тройку
+лидеров будущий строитель Мария Кондратюк.
+По словам председателя Спортклуба ИРНИТУ
+Александра Демидова, спартакиада
+университета – это кульминация
+спортивно-массовой работы в вузе. В т
+ечение учебного года ведется турнирная таблица,  а по завершению цикла мероприятий награждается самое активное подразделение вуза, одержавшее больше всего побед в зачетных видах спорта. . </string>
+    <string name="tab_item_schedule">Расписание</string>
+    <string name="title_activity_about">О приложении</string>
+
+    <string name="goal_app">Разработано в рамках гранта Ученого совета ИРНИТУ № 01П/2015 «Разработка и адаптация электронных
+        образовательных ресурсов в образовательном процессе ИРНИТУ для мобильных приложений»</string>
+    <string name="app_version">Версия 1.0.0</string>
+    <string name="copy_right">© Иркутский Национальный Исследовательский Технический Университет </string>
+    <string name="proger_mail">luck.alex13@gmail.com</string>
+    <string name="manager_mail">govorkov_as@istu.edu</string>
+    <string name="consult_mail">anton-z-s@yandex.ru</string>
+    <string name="send_mail_via">Написать с помощью</string>
+    <string name="mail_subject">Предложения и пожелания</string>
+    <string name="title_activity_news_common">NewsCommonActivity</string>
+    <string name="app_name_about">Электронное образование ИРНИТУ</string>
+
+
+</resources>

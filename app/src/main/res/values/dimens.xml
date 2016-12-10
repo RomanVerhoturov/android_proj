@@ -1,0 +1,21 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="design_navigation_icon_padding">32dp</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="activity_horizontal_margin_half">8dp</dimen>
+    <dimen name="activity_vertical_margin_half">8dp</dimen>
+    <dimen name="activity_horizontal_margin_fourth">4dp</dimen>
+    <dimen name="activity_vertical_margin_fourth">4dp</dimen>
+
+    <dimen name="activity_horizontal_margin_2x">32dp</dimen>
+    <dimen name="activity_vertical_margin_2x">32dp</dimen>
+    <dimen name="button_retry">32dp</dimen>
+
+    <dimen name="text_size_small">14sp</dimen>
+    <dimen name="text_size_small_med">16sp</dimen>
+    <dimen name="text_size_medium">18sp</dimen>
+    <dimen name="text_size_large">22sp</dimen>
+    <dimen name="card_view_brd_radius">4dp</dimen>
+    <dimen name="fab_margin">8dp</dimen>
+</resources>

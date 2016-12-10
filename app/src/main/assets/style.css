@@ -1,0 +1,20 @@
+.header.zindex20, .left-side, .right-side, .footer, .hist, .zagolovok, #qrdiv {
+   display: none;
+}
+
+.content {
+   padding: 0 !important;
+   padding-left: 0 !important;
+}
+
+.sch_search {
+    width: 320px !important;
+}
+.sch_search input[type="submit"] {
+     background-color: #DA5525 !important;
+     border: 0px solid #000 !important;
+     color: #fff !important;
+     margin: 10px 8px 15px 15px !important;
+     float: right;
+}
+

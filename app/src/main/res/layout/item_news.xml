@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardViewNews"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:paddingBottom="@dimen/activity_vertical_margin_half"
+
+    card:cardCornerRadius="@dimen/card_view_brd_radius"
+    card:cardElevation="3dp"
+    card:cardUseCompatPadding="true"
+    card:contentPaddingTop="@dimen/activity_vertical_margin"
+    card:contentPaddingLeft="@dimen/activity_vertical_margin"
+    card:contentPaddingRight="@dimen/activity_vertical_margin"
+    card:contentPaddingBottom="@dimen/activity_horizontal_margin_half">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white">
+
+        <RelativeLayout
+            android:id="@+id/circle_view"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="@dimen/activity_vertical_margin">
+            <!--android:background="@drawable/circle_orange_layout"-->
+
+            <TextView
+                android:id="@+id/circle_view_char"
+                style="@style/circle_view_character"
+                android:text="M" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/news_theme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/circle_view"
+            android:layout_weight="1"
+            android:paddingBottom="@dimen/activity_horizontal_margin_fourth"
+            android:text="Магистратура"
+            android:textColor="@color/primaryTextBlack"
+            android:textSize="@dimen/text_size_medium" />
+
+        <TextView
+            android:id="@+id/news_TV"
+            style="@style/text_grey_small_news"
+            android:layout_below="@+id/news_theme"
+            android:layout_toEndOf="@+id/circle_view"
+            android:layout_toRightOf="@+id/circle_view"
+            android:layout_marginBottom="@dimen/activity_horizontal_margin_fourth"
+            android:text="sdsdfdsgdfgdfgdfgsdsdfdsgdgdfgsdsdfdsgdfgdfgdfgsdsdfdsgdfgdfgdfgsdsdfdsgdfgdfgdfgsdsdfdsgdfgdfgdfgsdsdfdsgdfgdfgdfg" />
+
+        <TextView
+            android:id="@+id/news_dateTV"
+            style="@style/text_grey_small"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/news_TV"
+            android:text="22:22" />
+
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

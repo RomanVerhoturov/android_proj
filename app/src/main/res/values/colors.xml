@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#355E89</color>
+    <color name="colorPrimaryDark">#12416F</color>
+   <!-- <color name="colorAccent">#DA5525</color>-->
+    <color name="colorAccent">#FC7A4B</color>
+    <color name="orange_90">#e0FC7A4B</color>
+
+    <color name="colorButtonDisabled">#FF9366</color>
+    <color name="colorButtonEnabled">#FF8552</color>
+    <color name="colorButtonPressed">#F2672B</color>
+
+    <!--<color name="colorButtonDisabled">#FC7A4B</color>
+    <color name="colorButtonEnabled">#DA5525</color>
+    <color name="colorButtonPressed">#CE3802</color>-->
+
+    <color name="linkColor">#FF8552</color>
+
+    <color name="snackBarActionColor">#40C4FF</color>
+
+    <color name="primaryTextBlack">#212121</color>
+    <color name="primaryTextGrey">#505050</color>
+    <color name="secondaryTextGrey">#727272</color>
+    <color name="dividerLightGrey">#B6B6B6</color>
+    <color name="dividerMediumGrey">#888</color>
+    <color name="lightGrey">#E8E8E8</color>
+    <color name="hintColor">#f1f1f1</color>
+    <color name="mainBackground">#FAFAFA</color>
+    <color name="rvBackground">#E5EAF1</color>
+    <color name="transparent_black">#94333232</color>
+    <color name="bg_gray">#ecedef</color>
+    <color name="clearWhite">#FFFFFF</color>
+    <color name="red">#E06055</color>
+    <color name="violet">#9575CD</color>
+    <color name="blue">#5E97F6</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="white_transparent_90">#90ffffff</color>
+
+
+    <color name="black_transparent_80">#80000000</color>
+    <color name="black_transparent_90">#90000000</color>
+    <color name="black_transparent_A0">#A0000000</color>
+    <color name="green">#57BB8A</color>
+    <color name="green_light">#9CCC65</color>
+    <color name="yellow">#F8CA4C</color>
+    <color name="grey">#90A4AE</color>
+
+</resources>

@@ -10,6 +10,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -197,11 +199,19 @@ public class ResourceFragment extends AbstractTabFragment {
                 if (resourceItems.size() > 0) {
                     initRecView(resourceItems);
                     recyclerView.setVisibility(View.VISIBLE);
+                    if (currentTask == TASK_WEB) {
+                        if (cacheSize > resourceItems.size()) {
+                            Log.d(LOG_TAG, "cacheSize " + cacheSize +
+                                    " > newsItems.size() " + resourceItems.size());
+                            runDeleteThread();
+                        }
+                    }
 
                 } else {
                     Log.d(LOG_TAG, "onPostExecute() resourceItems.size() == 0");
                     showErrorView(true, R.string.error_nores);
                 }
+
             } else {
                 Log.d(LOG_TAG, "onPostExecute() resourceItems == null");
                 showErrorView(true, R.string.error_nodata);
@@ -340,6 +350,46 @@ public class ResourceFragment extends AbstractTabFragment {
             Log.d(LOG_TAG, ex.toString());
             return false;
         }
+    }
+
+    private void runDeleteThread() {
+        final Handler handler = new Handler() {
+            @Override
+            public void handleMessage(Message message) {
+                Log.d(LOG_TAG, "runDeleteThread handleMessage()");
+
+            }
+        };
+        final Thread thread = new Thread() {
+            @Override
+            public void run() {
+                Log.d(LOG_TAG, "runDeleteThread run()");
+
+                try {
+                    DBHelper dbHelper = new DBHelper(getContext());
+                    SQLiteDatabase database = dbHelper.getWritableDatabase();
+                    String selection = DBHelper.COLUMN_UPDATE_TIME + " != ?";
+                    String[] selectionArgs = new String[]{updTime};
+                    Cursor cursor = database.query(DBHelper.TABLE_NAME_RESOURCES, null, selection, selectionArgs, null, null, null);
+                    if (cursor.moveToFirst()) {
+                        int col = database.delete(DBHelper.TABLE_NAME_RESOURCES, selection, selectionArgs);
+                        Log.d(LOG_TAG, "was deleted rows " + col);
+                    } else {
+                        Log.d(LOG_TAG, "cursor.getCount() " + cursor.getCount());
+                    }
+                    // Log.d(LOG_TAG, "cursor.getCount() " + cursor.getCount());
+                } catch (SQLiteException ex) {
+                    ex.printStackTrace();
+                    Log.d(LOG_TAG, "SQLiteException " + DBHelper.TABLE_NAME_RESOURCES);
+                    Log.d(LOG_TAG, ex.getMessage());
+
+                }
+                final Message message = handler.obtainMessage(1, "");
+                handler.sendMessage(message);
+            }
+        };
+        thread.setPriority(5);
+        thread.start();
     }
 
     private void showErrorView(final boolean show, int textError) {

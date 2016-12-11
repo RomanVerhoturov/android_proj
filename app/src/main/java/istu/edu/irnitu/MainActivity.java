@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-       /* if (viewPager.getCurrentItem() == 2) {
+        if (viewPager.getCurrentItem() == 2) {
             ScheduleFragment fragment = (ScheduleFragment) adapter.getItem(2);
             if (fragment.getmWebView().canGoBack()) {
                 fragment.getmWebView().goBack();
@@ -109,8 +109,8 @@ public class MainActivity extends AppCompatActivity {
         } else {
             super.onBackPressed();
 
-        }*/
-        super.onBackPressed();
+        }
+        //super.onBackPressed();
     }
 
 

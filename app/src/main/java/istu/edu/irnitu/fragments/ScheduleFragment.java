@@ -158,6 +158,7 @@ public class ScheduleFragment extends AbstractTabFragment {
                     }
                 });
                 mWebView.setVisibility(View.GONE);
+                progressView.setVisibility(View.GONE);
             }
         } else {
             errorView.animate().setDuration(shortAnimTime).alpha(

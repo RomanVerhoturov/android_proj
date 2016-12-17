@@ -35,6 +35,10 @@ p[style*="text-align: right; font-style: italic; font-size: 80%;"] {
     display: none;
 }
 
+.wrapper {
+    background: none !important;
+}
+
 .sch_search {
     width: 95% !important;
     height: 12% !important;

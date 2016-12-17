@@ -5,10 +5,10 @@ android {
     buildToolsVersion "24.0.0"
     defaultConfig {
         applicationId "istu.edu.irnitu"
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 24
-        versionCode 7
-        versionName "1.0.6"
+        versionCode 8
+        versionName "1.0.7"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -17,29 +17,26 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    productFlavors {
+    }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'com.android.support:design:24.2.1'
     compile 'com.android.support:support-v4:24.2.1'
-
     compile 'com.android.support:cardview-v7:24.2.1'
     compile 'com.android.support:recyclerview-v7:24.2.1'
-
     compile 'com.afollestad.material-dialogs:core:0.8.5.9'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'org.jsoup:jsoup:1.9.1'
     compile 'org.sufficientlysecure:html-textview:3.0'
     compile 'com.klinkerapps:link_builder:1.4.0'
-
     compile 'com.github.pwittchen:infinitescroll:0.0.1'
-
-
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.daimajia.slider:library:1.1.5@aar'
     testCompile 'junit:junit:4.12'

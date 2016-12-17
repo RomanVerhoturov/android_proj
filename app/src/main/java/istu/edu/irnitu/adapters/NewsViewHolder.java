@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import istu.edu.irnitu.IOPackage.Constants;
 import istu.edu.irnitu.IOPackage.NewsCommonActivity;
 import istu.edu.irnitu.NewsActivity;
 import istu.edu.irnitu.R;
@@ -44,27 +45,23 @@ public class NewsViewHolder extends RecyclerView.ViewHolder implements View.OnCl
     @Override
     public void onClick(View v) {
         try {
-            if (newsItem.getHeaderImageUrl() != null & newsItem.getHeaderImageUrl() != null) {
-                if(newsItem.getHeaderImageUrl().length() > 0 & newsItem.getHeaderImageUrl().length() > 0) {
-                    Intent intent = new Intent(v.getContext(), NewsActivity.class);
-                    intent.putExtra("title", newsItem.getNewsTitle());
-                    intent.putExtra("theme", newsItem.getTheme());
-                    intent.putExtra("date", newsItem.getPublishDate());
-                    intent.putExtra("content", newsItem.getNewsText());
-                    intent.putExtra("images", newsItem.getImagesUrls());
-                    intent.putExtra("head_image", newsItem.getHeaderImageUrl());
-                    v.getContext().startActivity(intent);
-                }else {
-                    Intent intent = new Intent(v.getContext(), NewsCommonActivity.class);
-                    intent.putExtra("title", newsItem.getNewsTitle());
-                    intent.putExtra("theme", newsItem.getTheme());
-                    intent.putExtra("date", newsItem.getPublishDate());
-                    intent.putExtra("content", newsItem.getNewsText());
-                    intent.putExtra("images", newsItem.getImagesUrls());
-                    v.getContext().startActivity(intent);
-                }
+            if (!newsItem.getHeaderImageUrl().contains(Constants.NULL)) {
+                Intent intent = new Intent(v.getContext(), NewsActivity.class);
+                intent.putExtra("title", newsItem.getNewsTitle());
+                intent.putExtra("theme", newsItem.getTheme());
+                intent.putExtra("date", newsItem.getPublishDate());
+                intent.putExtra("content", newsItem.getNewsText());
+                intent.putExtra("images", newsItem.getImagesUrls());
+                intent.putExtra("head_image", newsItem.getHeaderImageUrl());
+                v.getContext().startActivity(intent);
             } else {
-
+                Intent intent = new Intent(v.getContext(), NewsCommonActivity.class);
+                intent.putExtra("title", newsItem.getNewsTitle());
+                intent.putExtra("theme", newsItem.getTheme());
+                intent.putExtra("date", newsItem.getPublishDate());
+                intent.putExtra("content", newsItem.getNewsText());
+                intent.putExtra("images", newsItem.getImagesUrls());
+                v.getContext().startActivity(intent);
             }
         } catch (NullPointerException ex) {
             ex.printStackTrace();

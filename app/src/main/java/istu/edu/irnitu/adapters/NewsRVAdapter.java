@@ -27,7 +27,7 @@ import istu.edu.irnitu.dataModels.NewsModel;
  * © Aleksandr Novikov 2016
  */
 public class NewsRVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private static final String LOG_TAG = "NewsRVAdapter";
+    private static final String LOG_TAG = "LOG_TAG_NewsRVAdapter";
     private static final int DIALOG = 1;
     private static ArrayList<NewsModel> newsList;
     private String currentDate;
@@ -43,13 +43,9 @@ public class NewsRVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     }
 
-
-
-
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
-       /* View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_news, parent, false);
-        //Log.d(LOG_TAG, "onCreateViewHolder ");*/
+
         RecyclerView.ViewHolder viewHolder;
         LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
         switch (viewType) {
@@ -79,8 +75,6 @@ public class NewsRVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         }
         return -1;
     }
-
-
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
@@ -144,11 +138,9 @@ public class NewsRVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
                         break;
                 }
-
                 break;
             case PROGRESS:
                 ProgressViewHolder vh2 = (ProgressViewHolder) holder;
-
                 break;
             default:
                 newsViewHolder = (NewsViewHolder) holder;
@@ -161,9 +153,6 @@ public class NewsRVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
         }
     }
-
-
-
 
     // Clean all elements of the recycler
     public void clear() {
@@ -194,12 +183,9 @@ public class NewsRVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             notifyDataSetChanged();
         }
     }
-
-
     @Override
     public int getItemCount() {
         return newsList.size();
     }
-
 
 }

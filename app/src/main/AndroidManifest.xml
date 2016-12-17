@@ -27,7 +27,6 @@
         <activity
             android:name=".NewsActivity"
             android:label="@string/title_activity_news"
-            android:configChanges="keyboardHidden|orientation|screenSize"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".AboutActivity"
@@ -37,8 +36,7 @@
         <activity
             android:name=".IOPackage.NewsCommonActivity"
             android:label="@string/title_activity_news"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

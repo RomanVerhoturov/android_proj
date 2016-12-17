@@ -1,4 +1,5 @@
-.header.zindex20, .left-side, .right-side, .footer, .hist, .zagolovok, #qrdiv, .view_print {
+.header.zindex20, .left-side, .right-side, .footer, .hist, .zagolovok,
+#qrdiv, #ny_lenta, #ny_lenta2, #ny_lenta3, .view_print {
    display: none !important;
 }
 
@@ -6,7 +7,7 @@
    padding: 0 !important;
    padding-left: 0 !important;
    font-size: 28px;
-}
+  }
 
 .content ul {
     margin-left: 0px !important;
@@ -16,6 +17,8 @@
 .middle {
     line-height: 36px;
     margin: 15px !important;
+    background-image: none;
+    background-color: #fff;
 }
 
 

@@ -19,7 +19,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private String newsLink;
     private String imagesUrls;
     public static final String DATABASE_NAME = "irnitu_database.db";
-    public static final int DATABASE_VERSION = 1;
+    public static final int DATABASE_VERSION = 2;
     public static final String TABLE_NAME_RESOURCES = " resources_table ";
     public static final String TABLE_NAME_NEWS = " news_table ";
 
@@ -38,7 +38,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String COLUMN_NEWS_IMAGES = "news_images";
     public static final String COLUMN_NEWS_IMAGE_HEADER = "news_image_header";
 
-    private static final String SQL_CREATE_TABLE_NEWS =
+    public static final String SQL_CREATE_TABLE_NEWS =
             "CREATE TABLE IF NOT EXISTS" + TABLE_NAME_NEWS +
                     "(_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     COLUMN_PUBLISH_DATE + " TEXT NOT NULL, " +
@@ -50,7 +50,7 @@ public class DBHelper extends SQLiteOpenHelper {
                     COLUMN_NEWS_IMAGES + " TEXT, " +
                     COLUMN_NEWS_IMAGE_HEADER + " TEXT);";
 
-    private static final String SQL_CREATE_TABLE_RESOURCES =
+    public static final String SQL_CREATE_TABLE_RESOURCES =
             "CREATE TABLE IF NOT EXISTS" + TABLE_NAME_RESOURCES +
                     "(_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     COLUMN_UPDATE_TIME_DATE + " TEXT NOT NULL, " +
@@ -73,9 +73,14 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        dropTable(db, TABLE_NAME_RESOURCES);
-        dropTable(db, TABLE_NAME_NEWS);
-        onCreate(db);
+        if(oldVersion <2){
+            Log.d(LOG_TAG, "onUpgrade db " + DATABASE_VERSION);
+            dropTable(db, TABLE_NAME_RESOURCES);
+            dropTable(db, TABLE_NAME_NEWS);
+            onCreate(db);
+            db.setVersion(DATABASE_VERSION);
+        }
+
     }
 
     public void dropTable(SQLiteDatabase db, String tableName) {

@@ -19,6 +19,7 @@ public class Constants {
     public static final String SUCCESS_READ_DB = "SUCCESS READ DB";
     public static final String SUCCESS_PARSING_JSON = "SUCCESS PARSING JSON";
     public static final String SUCCESS_PARSING = "SUCCESS PARSING PAGE";
+    public static final String NULL = "NULL";
 
     public static final String THEME_SPORT = "Воспитание, культура, спорт, здоровье";
     public static final String THEME_INTERNATIONAL = "Международная деятельность";

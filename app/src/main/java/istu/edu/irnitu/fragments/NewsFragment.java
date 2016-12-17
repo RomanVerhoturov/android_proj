@@ -117,9 +117,10 @@ public class NewsFragment extends AbstractTabFragment {
         swipeContainer.setColorSchemeResources(R.color.colorButtonDisabled);
         //nextUrl = Constants.URL_ISTU + "/news/?PAGEN_1=2#nav_start";
         running = false;
-        /*DBHelper dbHelper = new DBHelper(getContext());
-        dbHelper.dropTable(dbHelper.getWritableDatabase(),DBHelper.TABLE_NAME_NEWS);
-        dbHelper.close();*/
+        DBHelper dbHelper = new DBHelper(getContext());
+        dbHelper.dropTable(dbHelper.getWritableDatabase(), DBHelper.TABLE_NAME_NEWS);
+        dbHelper.getWritableDatabase().execSQL(DBHelper.SQL_CREATE_TABLE_NEWS);
+        dbHelper.close();
         startTask();
 
         return view;
@@ -158,12 +159,12 @@ public class NewsFragment extends AbstractTabFragment {
     private void startTask(String nextUrl, int endPosition) {
         if (InternetController.hasConnection(getContext())) {
             Log.d(LOG_TAG, "ContestRegister hasConnection ");
-            asyncTask = new NewsAsyncTask(nextUrl, endPosition,NewsAsyncTask.TASK_WEB_FOLLOWING);
+            asyncTask = new NewsAsyncTask(nextUrl, endPosition, NewsAsyncTask.TASK_WEB_FOLLOWING);
             asyncTask.execute();
 
         } else {
             Log.d(LOG_TAG, "NoConnection");
-            newsItems.remove(newsItems.size()-1);
+            newsItems.remove(newsItems.size() - 1);
             Toast.makeText(getContext(), R.string.error_nointernet, Toast.LENGTH_LONG).show();
            /* swipeContainer.setRefreshing(false);
             if (rvAdapter != null) {
@@ -186,7 +187,7 @@ public class NewsFragment extends AbstractTabFragment {
                     running = true;
 
                     //localList = newsItems;
-                    startTask(nextUrl,onScrolledToEnd);
+                    startTask(nextUrl, onScrolledToEnd);
                 }
             }
         };
@@ -240,16 +241,17 @@ public class NewsFragment extends AbstractTabFragment {
             switch (currentTask) {
                 case TASK_WEB_FIRST: {
                     response = webTask(urlLink);
+                    //response = webTask(Constants.URL_ISTU + "/news/?PAGEN_1=17#nav_start");
                     currentPage++;
-                    nextUrl = Constants.URL_ISTU + "/news/?PAGEN_1="+currentPage+"#nav_start";
-                    Log.d(LOG_TAG, "nextUrl "+nextUrl);
+                    nextUrl = Constants.URL_ISTU + "/news/?PAGEN_1=" + currentPage + "#nav_start";
+                    Log.d(LOG_TAG, "nextUrl " + nextUrl);
                     break;
                 }
                 case TASK_WEB_FOLLOWING: {
                     response = webTask(urlLink);
                     currentPage++;
-                    nextUrl = Constants.URL_ISTU + "/news/?PAGEN_1="+currentPage+"#nav_start";
-                    Log.d(LOG_TAG, "nextUrl "+nextUrl);
+                    nextUrl = Constants.URL_ISTU + "/news/?PAGEN_1=" + currentPage + "#nav_start";
+                    Log.d(LOG_TAG, "nextUrl " + nextUrl);
                     //localList.addAll(newsItems);
 
                    /* try {
@@ -287,7 +289,7 @@ public class NewsFragment extends AbstractTabFragment {
                     }
                 } else {
                     //localList.remove(localList.size() - 1);
-                    rvAdapter.removeItemScroll(rvAdapter.getItemCount()-1);
+                    rvAdapter.removeItemScroll(rvAdapter.getItemCount() - 1);
                     Log.d(LOG_TAG, "onPostExecute() newsItems.size() == 0");
                     showErrorView(true, R.string.error_nores);
                 }
@@ -386,14 +388,14 @@ public class NewsFragment extends AbstractTabFragment {
             ContentValues contentValues = new ContentValues();
             updTime = DateHelper.getCurrentTime();
             for (int i = 0; i < newsRows.size(); i++) {
-                //Log.d(LOG_TAG, "newsRow " + newsRows.get(i));
+
                 String[] header = newsRows.get(i).getElementsByClass("date_news_head").first().text().split("//");
                 Element tagA = newsRows.get(i).getElementsByTag("a").first();
                 newsLink = Constants.URL_ISTU + tagA.attr("href");
 
                 NewsModel newsModel = new NewsModel(header[1], NewsModel.COMMON, header[0].substring(0, header[0].length() - 4),
                         tagA.text(), newsLink);
-
+                Log.d(LOG_TAG, "newsRow " + newsModel.getNewsTitle());
 
                 if (!isNewsExistInDB(newsModel, database, DBHelper.TABLE_NAME_NEWS)) {
                     urlConnector = new HttpURLConnector(new URL(newsLink));
@@ -401,23 +403,33 @@ public class NewsFragment extends AbstractTabFragment {
                     Elements pTags = urlConnector.getJsoupDocument().getElementById("text_news").getElementsByTag("p");
                     Elements imgTags = pTags.select("img").remove();
                     StringBuffer buffer = new StringBuffer();
-                    float width,height;
-                    for (Element imgTag : imgTags) {
 
-                        width = Float.parseFloat(imgTag.attr("width"));
-                        height = Float.parseFloat(imgTag.attr("height"));
-                        float del = width/height;
-                        Log.d(LOG_TAG, "del "+del);
-                        if(del > 1.3){
-                            newsModel.setHeaderImageUrl(Constants.URL_ISTU + imgTag.attr("src"));
-                            Log.d(LOG_TAG, Constants.URL_ISTU + imgTag.attr("src"));
+
+                    if(imgTags.size()>0) {
+                        float width, height;
+                        for (Element imgTag : imgTags) {
+
+                            width = Float.parseFloat(imgTag.attr("width"));
+                            height = Float.parseFloat(imgTag.attr("height"));
+                            float del = width / height;
+                            //Log.d(LOG_TAG, "del "+del);
+                            if (del > 1.3) {
+                                newsModel.setHeaderImageUrl(Constants.URL_ISTU + imgTag.attr("src"));
+                                Log.d(LOG_TAG, Constants.URL_ISTU + imgTag.attr("src"));
+                            }
+                            buffer.append(Constants.URL_ISTU + imgTag.attr("src") + ";");
+
+
                         }
-                        buffer.append(Constants.URL_ISTU + imgTag.attr("src") + ";");
-
-
+                        newsModel.setImagesUrls(buffer.toString());
+                        if(newsModel.getHeaderImageUrl() == null) {
+                            newsModel.setHeaderImageUrl(Constants.NULL);
+                        }
+                    }else {
+                        newsModel.setImagesUrls(Constants.NULL);
+                        newsModel.setHeaderImageUrl(Constants.NULL);
                     }
                     newsModel.setNewsText(pTags.toString());
-                    newsModel.setImagesUrls(buffer.toString());
 
                     contentValues.clear();
                     contentValues.put(DBHelper.COLUMN_PUBLISH_DATE, newsModel.getPublishDate());
@@ -429,9 +441,9 @@ public class NewsFragment extends AbstractTabFragment {
                     contentValues.put(DBHelper.COLUMN_NEWS_IMAGES, newsModel.getImagesUrls());
                     contentValues.put(DBHelper.COLUMN_NEWS_IMAGE_HEADER, newsModel.getHeaderImageUrl());
                     database.insert(DBHelper.TABLE_NAME_NEWS, null, contentValues);
-                    Log.d(LOG_TAG, "database.insert() "  + newsModel.getPublishDate() + "; "
-                            + newsModel.getTheme() + "; " + newsModel.getNewsTitle() + "; "
-                            + newsModel.getNewsLink() + "; \n"+ newsModel.getImagesUrls() + "; "+ "; \n"+ newsModel.getHeaderImageUrl() + "; ");
+                    Log.d(LOG_TAG, "database.insert() " + newsModel.getPublishDate() + "; theme:"
+                            + newsModel.getTheme() + "; title:" + newsModel.getNewsTitle() + "; newslink: "
+                            + newsModel.getNewsLink() + "; \n" + newsModel.getImagesUrls() + "; " + "; \n" + newsModel.getHeaderImageUrl() + "; ");
                 } /*else if (cacheSize > newsRows.size()) {
                     newsModel.setId(existingNews[this.COLUMN_ID]);
                     newsModel.setNewsText(existingNews[this.COLUMN_NEWS_TEXT]);
@@ -450,9 +462,9 @@ public class NewsFragment extends AbstractTabFragment {
                     database.update(DBHelper.TABLE_NAME_NEWS, contentValues,
                             DBHelper.COLUMN_ID + " = ?", new String[]{existingNews[this.COLUMN_ID]});
                 }*/ else {
-                    Log.d(LOG_TAG, "Row in DB exist "  + newsModel.getPublishDate() + "; "
+                    Log.d(LOG_TAG, "Row in DB exist " + newsModel.getPublishDate() + "; "
                             + newsModel.getTheme() + "; " + newsModel.getNewsTitle() + "; "
-                            + newsModel.getNewsLink() + "; \n"+ existingNews[this.COLUMN_NEWS_IMAGES] + "; "+ "; \n"+ existingNews[this.COLUMN_NEWS_IMAGE_HEADER] + "; ");
+                            + newsModel.getNewsLink() + "; \n" + existingNews[this.COLUMN_NEWS_IMAGES] + "; " + "; \n" + existingNews[this.COLUMN_NEWS_IMAGE_HEADER] + "; ");
                     newsModel.setId(existingNews[this.COLUMN_ID]);
                     newsModel.setNewsText(existingNews[this.COLUMN_NEWS_TEXT]);
                     newsModel.setImagesUrls(existingNews[this.COLUMN_NEWS_IMAGES]);
@@ -502,7 +514,7 @@ public class NewsFragment extends AbstractTabFragment {
     }
 
     private boolean isNewsExistInDB(NewsModel newsModel, SQLiteDatabase database, String tableName) {
-        String[] columns = new String[]{DBHelper.COLUMN_ID, DBHelper.COLUMN_NEWS_TEXT, DBHelper.COLUMN_NEWS_IMAGES,DBHelper.COLUMN_NEWS_IMAGE_HEADER};
+        String[] columns = new String[]{DBHelper.COLUMN_ID, DBHelper.COLUMN_NEWS_TEXT, DBHelper.COLUMN_NEWS_IMAGES, DBHelper.COLUMN_NEWS_IMAGE_HEADER};
         String selection = DBHelper.COLUMN_PUBLISH_DATE + " = ? AND " + DBHelper.COLUMN_NEWS_THEME
                 + " = ? AND " + DBHelper.COLUMN_NEWS_TITLE + " = ? AND " + DBHelper.COLUMN_NEWS_LINK + " = ? ";
         String[] selectionArgs = new String[]{newsModel.getPublishDate(), newsModel.getTheme(),

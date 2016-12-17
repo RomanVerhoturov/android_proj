@@ -87,7 +87,7 @@ public class NewsActivity extends AppCompatActivity {
                 sliderShowView.setPresetTransformer(SliderLayout.Transformer.DepthPage);
                 //sliderShowView.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
                 sliderShowView.setCustomIndicator((PagerIndicator) findViewById(R.id.custom_indicator));
-                sliderShowView.setDuration(3000);
+                sliderShowView.setDuration(4000);
             }else {
                 DefaultSliderView defaultSliderView = new DefaultSliderView(this);
                 defaultSliderView

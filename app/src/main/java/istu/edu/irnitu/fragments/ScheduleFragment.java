@@ -88,15 +88,7 @@ public class ScheduleFragment extends AbstractTabFragment {
                 loadUrl(currentUrl);
             }
         });
-        /*swipeContainer = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainerSchedule);
-        swipeContainer.setColorSchemeResources(R.color.colorButtonDisabled);
 
-        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                loadUrl(currentUrl);
-            }
-        });*/
         //масштабирование карты
         mWebView.getSettings().setJavaScriptEnabled(true);
         mWebView.getSettings().setAllowUniversalAccessFromFileURLs(true);
@@ -128,13 +120,20 @@ public class ScheduleFragment extends AbstractTabFragment {
             byte[] buffer = new byte[inputStream.available()];
             inputStream.read(buffer);
             inputStream.close();
-            String encoded = Base64.encodeToString(buffer, Base64.NO_WRAP);
+            String encodedCSS = Base64.encodeToString(buffer, Base64.NO_WRAP);
+            mWebView.loadUrl("javascript:(function() {" +
+                    "var parent = document.getElementsByTagName('head').item(0);" +
+                    "var meta = document.createElement('meta');" +
+                    "meta.name = 'viewport';" +
+                    "meta.content = 'width=device-width';" +
+                    "parent.appendChild(meta)" +
+                    "})()");
             mWebView.loadUrl("javascript:(function() {" +
                     "var parent = document.getElementsByTagName('head').item(0);" +
                     "var style = document.createElement('style');" +
                     "style.type = 'text/css';" +
                     // Tell the browser to BASE64-decode the string into your script !!!
-                    "style.innerHTML = window.atob('" + encoded + "');" +
+                    "style.innerHTML = window.atob('" + encodedCSS + "');" +
                     "parent.appendChild(style)" +
                     "})()");
         } catch (Exception e) {
@@ -196,21 +195,12 @@ public class ScheduleFragment extends AbstractTabFragment {
     //переопределим класс WebViewClient и позволим нашему приложению обрабатывать ссылки
     private class MyWebViewClient extends WebViewClient {
 
-//        @Override
-//        public boolean shouldOverrideUrlLoading(WebView view, String url) {
-//            view.loadUrl(url);
-//            return true;
-//        }
-
         @Override
         public void onPageStarted(WebView view, String url, Bitmap favicon) {
             // TODO Auto-generated method stub
-
             showProgress(true);
             currentUrl = url;
             super.onPageStarted(view, url, favicon);
-
-
         }
 
         @Override
@@ -242,7 +232,6 @@ public class ScheduleFragment extends AbstractTabFragment {
                 progressView.setVisibility(show ? View.VISIBLE : View.GONE);
             }
         });
-
     }
 
     // our JavascriptInterface
@@ -270,6 +259,4 @@ public class ScheduleFragment extends AbstractTabFragment {
             mWebView.destroy();
         super.onDestroy();
     }
-
-
 }

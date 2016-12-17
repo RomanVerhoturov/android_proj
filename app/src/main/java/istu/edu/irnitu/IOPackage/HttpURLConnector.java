@@ -28,7 +28,6 @@ import java.util.Map;
  * © Aleksandr Novikov 2016
  */
 public class HttpURLConnector {
-
     private URL url;
     private final String LOG_TAG = "LOG_TAG_CONN";
     private static final String COOKIES_HEADER = "Set-Cookie";
@@ -54,37 +53,6 @@ public class HttpURLConnector {
         connection = null;
         jsoupDocument = null;
     }
-
-    public void addFormField(String key, String value) {
-        if (request == null) {
-            request = new StringBuffer();
-            request.append(key + "=" + value);
-        } else {
-            request.append("&" + key + "=" + value);
-        }
-    }
-
-
-    public StringBuffer getResponse() {
-        return response;
-    }
-
-
-    public String getCookies() {
-        if (cookiesHeader != null) {
-            if (cookieManager.getCookieStore().getCookies().size() > 0) {
-                return TextUtils.join(";", cookieManager.getCookieStore().getCookies());
-            } else
-                return "";
-
-        } else return "";
-    }
-
-    public String[] getAccountData() {
-        return accountData;
-    }
-
-
     public String simplePostRequest(String requestParams) {
         String body = null;
         response = new StringBuffer();
@@ -157,9 +125,6 @@ public class HttpURLConnector {
         }
         return body;
     }
-
-
-
     public String simpleGetRequest() {
         String result = null;
         response = new StringBuffer();
@@ -188,8 +153,6 @@ public class HttpURLConnector {
             inputStream.close();
             result = response.toString();
             jsoupDocument = Jsoup.parse(response.toString());
-
-
         } catch (UnknownHostException uhe) {
             errMessage = "simpleGetRequest UnknownHostException " + uhe.toString();
             response.append(errMessage);
@@ -210,11 +173,7 @@ public class HttpURLConnector {
         }
         return result;
     }
-
-
-
     public Document getJsoupDocument() {
         return jsoupDocument;
     }
-
 }

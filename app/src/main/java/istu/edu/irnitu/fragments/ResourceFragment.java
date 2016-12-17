@@ -397,7 +397,6 @@ public class ResourceFragment extends AbstractTabFragment {
         int shortAnimTime = getResources().getInteger(android.R.integer.config_mediumAnimTime);
 
         if (show) {
-
             if (rvAdapter != null) {
                 Toast.makeText(getContext(), textError, Toast.LENGTH_LONG).show();
             } else {
@@ -412,7 +411,6 @@ public class ResourceFragment extends AbstractTabFragment {
                 recyclerView.setVisibility(View.GONE);
 
             }
-
         } else {
             errorView.animate().setDuration(shortAnimTime).alpha(
                     show ? 1 : 0).setListener(new AnimatorListenerAdapter() {
@@ -422,32 +420,5 @@ public class ResourceFragment extends AbstractTabFragment {
                 }
             });
         }
-        //errorView.setVisibility(show ? View.VISIBLE : View.GONE);
-
-
-    }
-
-    @Override
-    public void onStop() {
-        Log.d(LOG_TAG, "onStop()");
-        super.onStop();
-    }
-
-    @Override
-    public void onDestroy() {
-        Log.d(LOG_TAG, "onDestroy()");
-        super.onDestroy();
-    }
-
-    @Override
-    public void onStart() {
-        Log.d(LOG_TAG, "onStart()");
-        super.onStart();
-    }
-
-    @Override
-    public void onResume() {
-        Log.d(LOG_TAG, "onResume()");
-        super.onResume();
     }
 }

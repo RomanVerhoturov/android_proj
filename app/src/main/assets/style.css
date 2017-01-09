@@ -1,70 +1,39 @@
-.header.zindex20, .left-side, .right-side, .footer, .hist, .zagolovok,
-#qrdiv, #ny_lenta, #ny_lenta2, #ny_lenta3, .view_print {
+.gray-line, .white-line, #topmenu, .footer-line, .crumbs, .zagolovok, #qrdiv {
    display: none !important;
 }
 
-.content {
-   padding: 0 !important;
-   padding-left: 0 !important;
-   font-size: 28px;
-  }
-
-.content ul {
-    margin-left: 0px !important;
+body {
+    background: none !important;
 }
 
-
-.middle {
-    line-height: 36px;
-    margin: 15px !important;
+.cont-0 {
     background-image: none;
-    background-color: #fff;
 }
 
-
-
-.sch_view li {
-    float: left  !important;
-    font-size: 37px !important;
-    padding-left: 15px !important;
-    padding-right: 15px !important;
+a {
+    color: #e13e04 !important;
+    text-decoration: underline;
 }
-
 
 p[style*="text-align: right; font-style: italic; font-size: 80%;"] {
     display: none;
 }
 
-.wrapper {
-    background: none !important;
+.sch_view {
+    -webkit-padding-start: 0px !important;
 }
 
-.sch_search {
-    width: 95% !important;
-    height: 12% !important;
-    padding: 3% !important;
+.sch_view li {
+    float: left  !important;
 }
+
 .sch_search input[type="submit"] {
-     background-color: #DA5525 !important;
-     border: 0px solid #000 !important;
+     background-color: #ff865a !important;
      color: #fff !important;
-     margin: 10px 8px 15px 15px !important;
-     height: 70px !important;
-     width: 20% !important;
-     font-size: 35px !important;
-     float: right;
+     border: none !important;
 }
 
 .sch_search input[type="text" ] {
     width: 70% !important;
-    height: 70px !important;
-    padding: 0 5px !important;
-    font-size: 35px !important;
 }
 
-.sch_search p {
-    font-size: 35px !important;
-}
-.sch_search h3 {
-    font-size: 45px !important;
-}

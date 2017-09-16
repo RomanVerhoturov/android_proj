@@ -22,6 +22,7 @@ public class Constants {
     public static final String NULL = "NULL";
 
     public static final String THEME_SPORT = "Воспитание, культура, спорт, здоровье";
+    public static final String THEME_CULTURE = "Культура";
     public static final String THEME_INTERNATIONAL = "Международная деятельность";
     public static final String THEME_INNOVATION = "Инновации";
     public static final String THEME_SCINCE = "Наука";

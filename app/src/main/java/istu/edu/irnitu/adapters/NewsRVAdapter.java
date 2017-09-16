@@ -91,6 +91,9 @@ public class NewsRVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                     case Constants.THEME_ABITUR:
                         newsViewHolder.circleView.setBackground(ContextCompat.getDrawable(adapterContext, R.drawable.circle_green_light_layout));
                         break;
+                    case Constants.THEME_CULTURE:
+                        newsViewHolder.circleView.setBackground(ContextCompat.getDrawable(adapterContext, R.drawable.circle_green_light_layout));
+                        break;
                     case Constants.THEME_ABOUT:
                         newsViewHolder.circleView.setBackground(ContextCompat.getDrawable(adapterContext, R.drawable.circle_blue_dark_layout));
                         break;

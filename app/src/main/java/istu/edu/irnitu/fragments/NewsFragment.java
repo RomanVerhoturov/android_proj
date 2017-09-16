@@ -375,7 +375,7 @@ public class NewsFragment extends AbstractTabFragment {
             URL url = new URL(urlLink);
             HttpURLConnector urlConnector = new HttpURLConnector(url);
             response = urlConnector.simpleGetRequest();
-            newsRows = urlConnector.getJsoupDocument().select("div#text_news");
+            newsRows = urlConnector.getJsoupDocument().select("div.newslist-item");
             newsItems = new ArrayList<>();
 
             DBHelper dbHelper = new DBHelper(getContext());
@@ -389,43 +389,37 @@ public class NewsFragment extends AbstractTabFragment {
             updTime = DateHelper.getCurrentTime();
             for (int i = 0; i < newsRows.size(); i++) {
 
-                String[] header = newsRows.get(i).getElementsByClass("date_news_head").first().text().split("//");
+                String date = newsRows.get(i).getElementsByClass("news-date").first().text();
+                String cat = newsRows.get(i).getElementsByClass("new-razdel-item").first().text();
                 Element tagA = newsRows.get(i).getElementsByTag("a").first();
                 newsLink = Constants.URL_ISTU + tagA.attr("href");
 
-                NewsModel newsModel = new NewsModel(header[1], NewsModel.COMMON, header[0].substring(0, header[0].length() - 4),
+                NewsModel newsModel = new NewsModel(cat, NewsModel.COMMON, date,
                         tagA.text(), newsLink);
                 Log.d(LOG_TAG, "newsRow " + newsModel.getNewsTitle());
+
+                newsModel.setHeaderImageUrl(Constants.URL_ISTU + newsRows.get(i).getElementsByTag("img").first().attr("src"));
+                Log.d(LOG_TAG, Constants.URL_ISTU + newsRows.get(i).getElementsByTag("img").first().attr("src"));
 
                 if (!isNewsExistInDB(newsModel, database, DBHelper.TABLE_NAME_NEWS)) {
                     urlConnector = new HttpURLConnector(new URL(newsLink));
                     urlConnector.simpleGetRequest();
-                    Elements pTags = urlConnector.getJsoupDocument().getElementById("text_news").getElementsByTag("p");
-                    Elements imgTags = pTags.select("img").remove();
+                    Elements content = urlConnector.getJsoupDocument().getElementsByClass("content");
+                    Elements pTags = content.first().getElementsByTag("p");
+                    Elements imgTags = content.first().getElementsByTag("img");
+                    pTags.select("img").remove();
                     StringBuffer buffer = new StringBuffer();
-
 
                     if(imgTags.size()>0) {
                         float width, height;
                         for (Element imgTag : imgTags) {
-
-                            width = Float.parseFloat(imgTag.attr("width"));
-                            height = Float.parseFloat(imgTag.attr("height"));
-                            float del = width / height;
-                            //Log.d(LOG_TAG, "del "+del);
-                            if (del > 1.3) {
-                                newsModel.setHeaderImageUrl(Constants.URL_ISTU + imgTag.attr("src"));
-                                Log.d(LOG_TAG, Constants.URL_ISTU + imgTag.attr("src"));
-                            }
                             buffer.append(Constants.URL_ISTU + imgTag.attr("src") + ";");
-
-
                         }
                         newsModel.setImagesUrls(buffer.toString());
-                        if(newsModel.getHeaderImageUrl() == null) {
+                        if (newsModel.getHeaderImageUrl() == null) {
                             newsModel.setHeaderImageUrl(Constants.NULL);
                         }
-                    }else {
+                    } else {
                         newsModel.setImagesUrls(Constants.NULL);
                         newsModel.setHeaderImageUrl(Constants.NULL);
                     }
@@ -508,6 +502,10 @@ public class NewsFragment extends AbstractTabFragment {
         } catch (NullPointerException nEx) {
             newsItems = null;
             response = "NullPointerException " + nEx;
+            nEx.printStackTrace();
+        } catch (NumberFormatException nEx) {
+            newsItems = null;
+            response = "NumberFormatException " + nEx;
             nEx.printStackTrace();
         }
         return response;

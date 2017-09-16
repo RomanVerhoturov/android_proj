@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         if (viewPager.getCurrentItem() == 2) {
             ScheduleFragment fragment = (ScheduleFragment) adapter.getItem(2);
-            if (fragment.getmWebView().canGoBack()) {
+            if (fragment != null && fragment.getmWebView().canGoBack()) {
                 fragment.getmWebView().goBack();
             } else {
                 super.onBackPressed();

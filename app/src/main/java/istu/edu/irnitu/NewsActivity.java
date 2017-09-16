@@ -122,6 +122,9 @@ public class NewsActivity extends AppCompatActivity {
             case Constants.THEME_ABITUR:
                 circleView.setBackground(ContextCompat.getDrawable(NewsActivity.this, R.drawable.circle_green_light_layout));
                 break;
+            case Constants.THEME_CULTURE:
+                circleView.setBackground(ContextCompat.getDrawable(NewsActivity.this, R.drawable.circle_green_light_layout));
+                break;
             case Constants.THEME_ABOUT:
                 circleView.setBackground(ContextCompat.getDrawable(NewsActivity.this, R.drawable.circle_blue_dark_layout));
                 break;

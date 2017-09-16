@@ -416,12 +416,8 @@ public class NewsFragment extends AbstractTabFragment {
                             buffer.append(Constants.URL_ISTU + imgTag.attr("src") + ";");
                         }
                         newsModel.setImagesUrls(buffer.toString());
-                        if (newsModel.getHeaderImageUrl() == null) {
-                            newsModel.setHeaderImageUrl(Constants.NULL);
-                        }
                     } else {
                         newsModel.setImagesUrls(Constants.NULL);
-                        newsModel.setHeaderImageUrl(Constants.NULL);
                     }
                     newsModel.setNewsText(pTags.toString());
 

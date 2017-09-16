@@ -51,7 +51,7 @@
 
     <string name="goal_app">Разработано в рамках гранта Ученого совета ИРНИТУ № 01П/2015 «Разработка и адаптация электронных
         образовательных ресурсов в образовательном процессе ИРНИТУ для мобильных приложений»</string>
-    <string name="app_version">Версия 1.1.03</string>
+    <string name="app_version">Версия 1.1.04</string>
     <string name="copy_right">© Иркутский Национальный Исследовательский Технический Университет </string>
     <string name="proger_mail">luck.alex13@gmail.com</string>
     <string name="manager_mail">govorkov_as@istu.edu</string>
